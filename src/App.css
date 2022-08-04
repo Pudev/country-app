@@ -31,15 +31,29 @@ tr:nth-child(even) {
 
 #search-form {
   margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
 }
 
-input,
-button[type="search"] {
+input[type="submit"] {
   height: 30px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-color: grey;
+  border-style: solid;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: none;
 }
 
 input[type="search"] {
+  height: 30px;
   width: 300px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right-style: solid;
+  padding-left: 10px;
+  border-style: solid;
 }

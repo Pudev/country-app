@@ -1,10 +1,13 @@
 // import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { countries as countriesData } from "./contries-mock-data";
-import Table from '../components/Table/Table';
+import Modal from "../components/Modal/Modal";
+import Table from "../components/Table/Table";
+
 const FirstPage = () => {
   const [countries, setCountries] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(true);
 
   const fetchData = async () => {
     // const result = await axios.get(
@@ -52,7 +55,10 @@ const FirstPage = () => {
         <input type="submit" value="Search" onClick={onSearch} />
       </form>
 
-      <Table data={countriesData} rowsPerPage={20}/>
+      <Table data={countriesData} rowsPerPage={20} />
+      {isModalVisible && (
+        <Modal onClose={() => setIsModalVisible(false)}>Test some details</Modal>
+      )}
     </>
   );
 };
