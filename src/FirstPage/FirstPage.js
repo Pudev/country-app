@@ -7,7 +7,8 @@ import Table from "../components/Table/Table";
 const FirstPage = () => {
   const [countries, setCountries] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [currentCountry, setCurrentCountry] = useState({});
 
   const fetchData = async () => {
     // const result = await axios.get(
@@ -44,6 +45,11 @@ const FirstPage = () => {
     setCountries([...filteredResults]);
   };
 
+  const openDetails = (country) => {
+    setIsModalVisible(true);
+    setCurrentCountry({ ...country });
+  };
+
   return (
     <>
       <form id="search-form">
@@ -55,9 +61,17 @@ const FirstPage = () => {
         <input type="submit" value="Search" onClick={onSearch} />
       </form>
 
-      <Table data={countriesData} rowsPerPage={20} />
+      <Table data={countries} rowsPerPage={10} openDetails={openDetails} />
       {isModalVisible && (
-        <Modal onClose={() => setIsModalVisible(false)}>Test some details</Modal>
+        <Modal onClose={() => setIsModalVisible(false)}>
+          <div>Country name: {currentCountry.name}</div>
+          <div>Capital name: {currentCountry.capitalName}</div>
+          <div>Code: {currentCountry.code}</div>
+          <div>Flag: {currentCountry.flag}</div>
+          <div>Population: {currentCountry.population}</div>
+          <div>Region: {currentCountry.region}</div>
+          <div>Subregion: {currentCountry.subregion}</div>
+        </Modal>
       )}
     </>
   );

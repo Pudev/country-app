@@ -4,9 +4,10 @@ import useTable from "../../hooks/useTable";
 import styles from "./Table.module.css";
 import TableFooter from "./TableFooter";
 
-const Table = ({ data, rowsPerPage }) => {
+const Table = ({ data, rowsPerPage, openDetails }) => {
   const [page, setPage] = useState(1);
   const { slice, range } = useTable(data, page, rowsPerPage);
+
   return (
     <>
       <table className={styles.table}>
@@ -24,7 +25,7 @@ const Table = ({ data, rowsPerPage }) => {
         </thead>
         <tbody>
           {slice.map((c, index) => (
-            <tr className={styles.tableRowItems} key={index}>
+            <tr className={styles.tableRowItems} key={index} onClick={() => openDetails(c)}>
               <td className={styles.tableCell}>{c.capitalName}</td>
               <td className={styles.tableCell}>{c.code}</td>
               <td className={styles.tableCell}>
