@@ -29,7 +29,7 @@ import FirstPage from "./FirstPage/FirstPage";
 function App() {
   return (
     <main className="main">
-      <seciton>
+      <seciton style={{width: '90%'}}>
         <FirstPage />
       </seciton>
     </main>
