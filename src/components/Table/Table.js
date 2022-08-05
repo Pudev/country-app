@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 
 import useTable from "../../hooks/useTable";
-// import useLongPress from "../../hooks/useLongPress";
 import TableFooter from "./TableFooter";
 
 import "./Table.css";
 
 const Table = ({ data, rowsPerPage, openDetails }) => {
   const [page, setPage] = useState(1);
-  const { slice, range } = useTable(data, page, rowsPerPage);
+  const [sortData, setSortData] = useState(data);
+  const { slice, range } = useTable(sortData, page, rowsPerPage);
 
-  // const defaultOptions = {
-  //   shouldPreventDefault: true,
-  //   delay: 2000,
-  // };
-
-  // const onLongPress = (c) => {
-  //   openDetails(c);
-  // };
-
-  // const longPressEvent = useLongPress(onLongPress, () => {}, defaultOptions);
+  const sort = () => {
+    const sortAscending = data.sort((a, b) => {
+      if (a.capitalName < b.capitalName) return -1;
+      if (a.capitalName > b.capitalName) return 1;
+      return 0;
+    });
+    setSortData([...sortAscending]);
+  };
 
   return (
     <>
       <table className="table">
         <thead className="tableRowHeader">
           <tr>
-            <th className="tableHeader">Capital Name</th>
+            <th className="tableHeader" onClick={sort}>
+              Capital Name
+            </th>
             <th className="tableHeader">Code</th>
             <th className="tableHeader">Flag</th>
             <th className="tableHeader">Lat-Lng</th>

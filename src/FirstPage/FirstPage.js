@@ -12,13 +12,7 @@ const FirstPage = () => {
 
   const fetchData = async () => {
     // const result = await axios.get(
-    //   "https://excitel-countries.azurewebsites.net/countries",
-    //   {
-    //     proxy: {
-    //       host: "localhost",
-    //       port: 3000,
-    //     },
-    //   }
+    //   "https://excitel-countries.azurewebsites.net/countries"
     // );
     setCountries(countriesData);
   };
@@ -26,16 +20,6 @@ const FirstPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  // TODO: ascending and descending all the columns
-  const onSort = (e) => {
-    const sortAscending = countries.sort((a, b) => {
-      if (a.capitalName < b.capitalName) return -1;
-      if (a.capitalName > b.capitalName) return 1;
-      return 0;
-    });
-    setCountries([...sortAscending]);
-  };
 
   const onSearch = (e) => {
     e.preventDefault();

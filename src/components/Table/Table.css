@@ -8,6 +8,7 @@
   background-color: transparent;
   transition: all 0.25s ease;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .tableHeader {
