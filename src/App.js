@@ -29,9 +29,9 @@ import FirstPage from "./FirstPage/FirstPage";
 function App() {
   return (
     <main className="main">
-      <seciton style={{width: '90%'}}>
+      <section style={{width: '90%'}}>
         <FirstPage />
-      </seciton>
+      </section>
     </main>
   );
 }
