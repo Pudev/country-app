@@ -7,24 +7,15 @@ import "./Table.css";
 
 const Table = ({ data, rowsPerPage, openDetails }) => {
   const [page, setPage] = useState(1);
-  const [sortData, setSortData] = useState(data);
-  const { slice, range } = useTable(sortData, page, rowsPerPage);
-
-  const sort = () => {
-    const sortAscending = data.sort((a, b) => {
-      if (a.capitalName < b.capitalName) return -1;
-      if (a.capitalName > b.capitalName) return 1;
-      return 0;
-    });
-    setSortData([...sortAscending]);
-  };
+  const [sortColumn, setSortColumn] = useState();
+  const { slice, range } = useTable(data, page, rowsPerPage, sortColumn);
 
   return (
     <>
       <table className="table">
         <thead className="tableRowHeader">
           <tr>
-            <th className="tableHeader" onClick={sort}>
+            <th className="tableHeader" onClick={() => setSortColumn("capitalName")}>
               Capital Name
             </th>
             <th className="tableHeader">Code</th>
