@@ -1,19 +1,19 @@
 import React from "react";
-import styles from "./Modal.module.css";
+import "./Modal.css";
 
 const Modal = ({ onClose, children }) => {
   return (
     <>
-      <div className={styles.darkBG} onClick={onClose} />
-      <div className={styles.centered}>
-        <div className={styles.modal}>
-          <div className={styles.modalHeader}>
-            <h5 className={styles.heading}>Details</h5>
+      <div className="darkBG" onClick={onClose} />
+      <div className="centered">
+        <div className="modal">
+          <div className="modalHeader">
+            <h5 className="heading">Details</h5>
           </div>
-          <button className={styles.closeBtn} onClick={onClose}>
+          <button className="closeBtn" onClick={onClose}>
             X
           </button>
-          <div className={styles.modalContent}>{children}</div>
+          <div className="modalContent">{children}</div>
         </div>
       </div>
     </>

@@ -1,43 +1,60 @@
 import React, { useState } from "react";
 
 import useTable from "../../hooks/useTable";
-import styles from "./Table.module.css";
+// import useLongPress from "../../hooks/useLongPress";
 import TableFooter from "./TableFooter";
+
+import "./Table.css";
 
 const Table = ({ data, rowsPerPage, openDetails }) => {
   const [page, setPage] = useState(1);
   const { slice, range } = useTable(data, page, rowsPerPage);
 
+  // const defaultOptions = {
+  //   shouldPreventDefault: true,
+  //   delay: 2000,
+  // };
+
+  // const onLongPress = (c) => {
+  //   openDetails(c);
+  // };
+
+  // const longPressEvent = useLongPress(onLongPress, () => {}, defaultOptions);
+
   return (
     <>
-      <table className={styles.table}>
-        <thead className={styles.tableRowHeader}>
+      <table className="table">
+        <thead className="tableRowHeader">
           <tr>
-            <th className={styles.tableHeader}>Capital Name</th>
-            <th className={styles.tableHeader}>Code</th>
-            <th className={styles.tableHeader}>Flag</th>
-            <th className={styles.tableHeader}>Lat-Lng</th>
-            <th className={styles.tableHeader}>Name</th>
-            <th className={styles.tableHeader}>Population</th>
-            <th className={styles.tableHeader}>Region</th>
-            <th className={styles.tableHeader}>Subregion</th>
+            <th className="tableHeader">Capital Name</th>
+            <th className="tableHeader">Code</th>
+            <th className="tableHeader">Flag</th>
+            <th className="tableHeader">Lat-Lng</th>
+            <th className="tableHeader">Name</th>
+            <th className="tableHeader">Population</th>
+            <th className="tableHeader">Region</th>
+            <th className="tableHeader">Subregion</th>
           </tr>
         </thead>
         <tbody>
           {slice.map((c, index) => (
-            <tr className={styles.tableRowItems} key={index} onClick={() => openDetails(c)}>
-              <td className={styles.tableCell}>{c.capitalName}</td>
-              <td className={styles.tableCell}>{c.code}</td>
-              <td className={styles.tableCell}>
+            <tr
+              className="tableRowItems"
+              key={index}
+              onClick={() => openDetails(c)}
+            >
+              <td className="tableCell">{c.capitalName}</td>
+              <td className="tableCell">{c.code}</td>
+              <td className="tableCell">
                 <img height={25} width={25} src={c.flag} alt="no-flag" />
               </td>
-              <td className={styles.tableCell}>
+              <td className="tableCell">
                 {`${c.latLng[0] ?? ""}, ${c.latLng[1] ?? ""}`}
               </td>
-              <td className={styles.tableCell}>{c.name}</td>
-              <td className={styles.tableCell}>{c.population}</td>
-              <td className={styles.tableCell}>{c.region}</td>
-              <td className={styles.tableCell}>{c.subregion}</td>
+              <td className="tableCell">{c.name}</td>
+              <td className="tableCell">{c.population}</td>
+              <td className="tableCell">{c.region}</td>
+              <td className="tableCell">{c.subregion}</td>
             </tr>
           ))}
         </tbody>
